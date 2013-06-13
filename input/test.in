@@ -1,0 +1,13 @@
+/Users/gdobler/templemaps/data/				: data path
+5							: # of bands
+wmap_k_imap_fwhm60_0512.fits				: data file
+wmap_ka_imap_fwhm60_0512.fits				: data file
+wmap_q_imap_fwhm60_0512.fits				: data file
+wmap_v_imap_fwhm60_0512.fits				: data file
+wmap_w_imap_fwhm60_0512.fits				: data file
+
+/Users/gdobler/templemaps/tmpl/				: template path
+3							: # of templates
+Halpha_corr_fwhm60_0512.fits				: template file
+FDS_94_fwhm60_0512.fits					: template file
+haslam_fwhm060_0512.fits				: template file
