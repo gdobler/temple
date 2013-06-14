@@ -63,5 +63,6 @@ class tfTmpl {
 void matrixMultiply(vector<vector<float> >, vector<vector<float> >, 
 		    vector<vector<float> > &);
 
+void matrixInvert(vector<vector<float> >, vector<vector<float> > &);
 
 #endif
