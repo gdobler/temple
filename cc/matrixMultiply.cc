@@ -1,4 +1,4 @@
-#include "tempFit.h"
+#include "temple.h"
 
 void matrixMultiply(vector<vector<float> > matA, vector<vector<float> > matB, 
 		    vector<vector<float> >& prod) {

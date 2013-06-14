@@ -42,7 +42,7 @@ class tfData {
 class tfMask {
 
  public:
-  vector<int> map;
+  vector<int> map, ind;
 
   tfMask(tfInput, tfData);
 };

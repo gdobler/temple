@@ -1,4 +1,4 @@
-#include "tempFit.h"
+#include "temple.h"
 
 vector<int> minmax(vector<int> vec) {
   int min=vec[0], max=vec[0];
@@ -55,6 +55,7 @@ int main(int argc, char * argv[]) {
   vector<int> mm = minmax(mask.map);
   cout << "mask = " << input.mpath + input.mname << endl;
   cout << "minmax(mask) = " << mm[0] << " " << mm[1] << endl;
+  cout << "size of ind = " << mask.ind.size() << endl;
   cout << "tmpl.maps[0].size() = " << tmpl.maps[0].size() << endl;
   cout << "tmpl[1][15349] = " << tmpl.maps[1][15349] << endl;
 

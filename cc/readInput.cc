@@ -1,4 +1,4 @@
-#include "tempFit.h"
+#include "temple.h"
 
 tfInput::tfInput(string path, string infile) {
 

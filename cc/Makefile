@@ -11,22 +11,22 @@ all:
 clean:
 	rm *.o temple *~
 
-readInput.o: tempFit.h
+readInput.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c readInput.cc
 
-readData.o: tempFit.h
+readData.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c readData.cc
 
-readMask.o: tempFit.h
+readMask.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c readMask.cc
 
-readTemplates.o: tempFit.h
+readTemplates.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c readTemplates.cc
 
-matrixMultiply.o: tempFit.h
+matrixMultiply.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c matrixMultiply.cc
 
-temple.o: tempFit.h
+temple.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c temple.cc
 
 temple: 

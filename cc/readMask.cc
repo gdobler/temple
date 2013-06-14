@@ -1,4 +1,4 @@
-#include "tempFit.h"
+#include "temple.h"
 
 tfMask::tfMask(tfInput input, tfData data) {
 
@@ -8,13 +8,18 @@ tfMask::tfMask(tfInput input, tfData data) {
 
   // -------- in case of no mask name, set mask to ones
   if (input.mname.size()==0) {
-    for (int ipix=0;ipix<npix;ipix++) map[ipix] = 1;
+    ind.resize(npix);
+
+    for (int ipix=0;ipix<npix;ipix++) {
+      map[ipix] = 1;
+      ind[ipix] = ipix;
+    }
     return;
   }
 
   // -------- utilities
   fitsfile *fptr;
-  int status=0, anynul;
+  int status=0, anynul, dumint;
   int * dummap;
   string infile;
 
@@ -40,8 +45,12 @@ tfMask::tfMask(tfInput input, tfData data) {
     exit(status);
   }
 
-  for (int ipix=0;ipix<npix;ipix++) 
-    map[ipix] = dummap[ipix];
+  for (int ipix=0;ipix<npix;ipix++) {
+    dumint    = dummap[ipix];
+    map[ipix] = dumint;
+
+    if (dumint) ind.push_back(ipix);
+  }
 
   // -------- clean up
   delete dummap;
