@@ -6,7 +6,7 @@ LFLAGS = -L/opt/local/lib
 LIBS = -lcfitsio
 
 all:
-	make readInput.o readData.o readMask.o readTemplates.o matrixMultiply.o matrixInvert.o temple.o temple
+	make readInput.o readData.o readMask.o readTemplates.o matrixMultiply.o matrixInvert.o genILC.o temple.o temple
 
 clean:
 	rm *.o temple *~
@@ -29,8 +29,11 @@ matrixMultiply.o: temple.h
 matrixInvert.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c matrixInvert.cc
 
+genILC.o: temple.h
+	${CC} ${CFLAGS} ${INCLUDES} -c genILC.cc
+
 temple.o: temple.h
 	${CC} ${CFLAGS} ${INCLUDES} -c temple.cc
 
 temple: 
-	${CC} ${CFLAGS} ${LFLAGS} ${LIBS} readInput.o readData.o readMask.o readTemplates.o matrixMultiply.o matrixInvert.o temple.o -o temple
+	${CC} ${CFLAGS} ${LFLAGS} ${LIBS} readInput.o readData.o readMask.o readTemplates.o matrixMultiply.o matrixInvert.o genILC.o temple.o -o temple
