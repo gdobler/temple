@@ -50,7 +50,7 @@ tfTmpl::tfTmpl(tfInput input) {
       fits_report_error(stderr, status);
       exit(status);
     }
-    if (fits_read_img(fptr, TFLOAT, 1, npix, 0, dummap, &anynul, &status)) {
+    if (fits_read_img(fptr, TTYPE, 1, npix, 0, dummap, &anynul, &status)) {
       fits_report_error(stderr, status);
       exit(status);
     }

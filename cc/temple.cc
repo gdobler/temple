@@ -22,7 +22,7 @@ int main(int argc, char * argv[]) {
 
   // -------- check for inputs
   if (argc<3 || argc>3) {
-    cout << "\nCalling sequence is:\n  ./runFit path infile\n\n";
+    cout << "\nCalling sequence is:\n  ./temple path infile\n\n";
     return(-1);
   }
 
@@ -60,6 +60,12 @@ int main(int argc, char * argv[]) {
   cout << "tmpl[1][15349] = " << tmpl.maps[1][15349] << endl;
 
 
+  // -------- make an ILC
+  vector<float> ilc;
+
+  ilc = genILC(data,mask);
+
+  cout << "ilc[15349] = " << ilc[15349] << endl;
 
 
   /*
@@ -141,7 +147,7 @@ int main(int argc, char * argv[]) {
 
   cout << "reading image...\n";
 
-  fits_read_img(fptr,TFLOAT,1,1,0,pix0,&anynul,&status);
+  fits_read_img(fptr,TTYPE,1,1,0,pix0,&anynul,&status);
 
   cout << "status of read image: " << status << endl;
 
