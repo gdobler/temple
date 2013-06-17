@@ -64,14 +64,13 @@ vector<float> genILC(tfData data, tfMask mask, int refband) {
 
   for (int i=0;i<nband;i++) cout << "zeta[" << i << "] = " << zeta[i] << endl;
   // -------- create the ilc
-  for (ipix=0;ipix<npix;ipix++) ilc[ipix] = data.maps[refband][ipix];
+  for (ipix=0;ipix<npix;ipix++)
+    ilc[ipix] = data.maps[refband][ipix];
 
-  for (iband=0;iband<nband-1;iband++) {
+  for (iband=0;iband<nband;iband++) {
     for (ipix=0;ipix<npix;ipix++)
-      ilc[ipix] += zeta[iband]*(Pmat[iband][ipix]-data.maps[iband][ipix]);
+      ilc[ipix] += zeta[iband]*Pmat[iband][ipix];
   }
 
-  for (ipix=0;ipix<npix;ipix++) ilc[ipix] = zeta[nband-1]*Pmat[nband-1][ipix];
-  
   return(ilc);
 }
