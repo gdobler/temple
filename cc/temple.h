@@ -13,6 +13,11 @@
 using namespace std;
 
 
+// -------- define double precision
+#define float double
+#define TTYPE TDOUBLE
+
+
 // -------- input class
 class tfInput {
 
@@ -64,5 +69,7 @@ void matrixMultiply(vector<vector<float> >, vector<vector<float> >,
 		    vector<vector<float> > &);
 
 void matrixInvert(vector<vector<float> >, vector<vector<float> > &);
+
+vector<float> genILC(tfData data, tfMask mask, int refband=0);
 
 #endif
