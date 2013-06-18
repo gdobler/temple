@@ -4,36 +4,25 @@ LDFLAGS = -lm
 INCLUDES = -I/opt/local/include
 LFLAGS = -L/opt/local/lib
 LIBS = -lcfitsio
+SRCS = readInput.cc readData.cc readMask.cc readTemplates.cc matrixMultiply.cc matrixInvert.cc genILC.cc temple.cc
+OBJS = $(SRCS:.cc=.o)
+MAIN = temple
 
-all:
-	make readInput.o readData.o readMask.o readTemplates.o matrixMultiply.o matrixInvert.o genILC.o temple.o temple
+.PHONY: depend clean
+
+all: $(MAIN)
+	@echo temple executable compiled...
+
+$(MAIN): $(OBJS)
+	$(CC) $(CLFAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
+
+.cc.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm *.o temple *~
+	$(RM) *.o *~ $(MAIN)
 
-readInput.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c readInput.cc
+depend: $(SRCS)
+	makedepend $(INCLUDES) $^
 
-readData.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c readData.cc
-
-readMask.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c readMask.cc
-
-readTemplates.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c readTemplates.cc
-
-matrixMultiply.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c matrixMultiply.cc
-
-matrixInvert.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c matrixInvert.cc
-
-genILC.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c genILC.cc
-
-temple.o: temple.h
-	${CC} ${CFLAGS} ${INCLUDES} -c temple.cc
-
-temple: 
-	${CC} ${CFLAGS} ${LFLAGS} ${LIBS} readInput.o readData.o readMask.o readTemplates.o matrixMultiply.o matrixInvert.o genILC.o temple.o -o temple
+# DO NOT DELETE THIS LINE -- make depend needs it
