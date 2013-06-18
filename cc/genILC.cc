@@ -82,5 +82,14 @@ vector<float> genILC(tfData data, tfMask mask, int refband) {
       ilc[ipix] += zeta[iband]*Pmat[iband][ipix];
   }
 
+
+  // -------- cleanup
+  ccvec.~vector();
+  zeta.~vector();
+  mm.~vector();
+  ccmat.~vector();
+  Pmat.~vector();
+  ccinv.~vector();
+
   return(ilc);
 }
