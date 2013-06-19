@@ -22,6 +22,7 @@ vector<float> genILC(tfData data, tfMask mask, int refband) {
     mm[iband] /= (float)ngpix;
   }
 
+
   // -------- fill the P matrix
   int itr=0;
   for (iband=0;iband<nband;++iband) {
@@ -63,17 +64,8 @@ vector<float> genILC(tfData data, tfMask mask, int refband) {
     zeta[iband] = sum;
   }
 
-  int i,j;
-  for (i=0;i<nband;++i) cout << ccvec[i] << "  " << endl;
-  for (i=0;i<nband;++i) {
-    cout << endl;
-    for (j=0;j<nband;++j)
-      cout << ccinv[i][j] << "\t";
-  }
-  cout << endl;
 
-  for (int i=0;i<nband;i++) cout << "zeta[" << i << "] = " << zeta[i] << endl;
-  // -------- create the ilc
+  // -------- create the ilc and return
   for (ipix=0;ipix<npix;ipix++)
     ilc[ipix] = data.maps[refband][ipix]-mm[refband];
 
@@ -81,15 +73,6 @@ vector<float> genILC(tfData data, tfMask mask, int refband) {
     for (ipix=0;ipix<npix;ipix++)
       ilc[ipix] += zeta[iband]*Pmat[iband][ipix];
   }
-
-
-  // -------- cleanup
-  ccvec.~vector();
-  zeta.~vector();
-  mm.~vector();
-  ccmat.~vector();
-  Pmat.~vector();
-  ccinv.~vector();
 
   return(ilc);
 }
