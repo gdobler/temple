@@ -21,7 +21,7 @@ vector<int> minmax(vector<int> vec) {
 int main(int argc, char * argv[]) {
 
   // -------- check for inputs
-  if (argc<3 || argc>3) {
+  if (argc<3) {
     cout << "\nCalling sequence is:\n  ./temple path infile\n\n";
     return(-1);
   }
@@ -66,6 +66,26 @@ int main(int argc, char * argv[]) {
   ilc = genILC(data,mask);
 
   cout << "ilc[15349] = " << ilc[15349] << endl;
+
+
+  // -------- write it to a file
+  string ilcout;
+
+  if (argc>3) {
+    string arg, id("ilcout=");
+
+    for (int iarg=3;iarg<argc;iarg++) {
+      arg = argv[iarg];
+
+      if (arg.size()>id.size() && arg.substr(0,id.size())==id)
+	ilcout = arg.substr(id.size());
+    }
+  } else {
+    ilcout = "../output/ilc.fits";
+  }
+
+  writeMap(ilc,ilcout);
+
 
 
   /*
