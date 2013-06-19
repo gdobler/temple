@@ -4,7 +4,7 @@ LDFLAGS = -lm
 INCLUDES = -I/opt/local/include
 LFLAGS = -L/opt/local/lib
 LIBS = -lcfitsio
-SRCS = readInput.cc readData.cc readMask.cc readTemplates.cc matrixMultiply.cc matrixInvert.cc genILC.cc temple.cc
+SRCS = readInput.cc readData.cc readMask.cc readTemplates.cc matrixMultiply.cc matrixInvert.cc genILC.cc writeMap.cc temple.cc
 OBJS = $(SRCS:.cc=.o)
 MAIN = temple
 
