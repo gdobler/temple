@@ -65,6 +65,17 @@ class tfTmpl {
 };
 
 
+// -------- template fit class
+class tfFit {
+
+ public:
+  vector<float> chisq;
+  vector<vector<float> > cc, res;
+
+  tfFit(tfData, tfTmpl, tfMask);
+};
+
+
 // -------- function declarations
 void matrixMultiply(vector<vector<float> >, vector<vector<float> >, 
 		    vector<vector<float> > &);
